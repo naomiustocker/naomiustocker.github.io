@@ -8,6 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Georgia', serif; background-color: #F7F4EF; color: #1a1a1a; min-height: 100vh; }
 
+    /* SIDEBAR */
     #sidebar {
       position: fixed; left: 0; top: 0; width: 220px; height: 100%;
       background: #F7F4EF; padding: 2rem 1.5rem;
@@ -36,21 +37,47 @@
     .nav-leaf { font-size: 11px; color: #777; cursor: pointer; padding: 2px 0; text-decoration: none; display: block; }
     .nav-leaf:hover { color: #1a1a1a; }
 
+    /* MAIN */
     .main { margin-left: 40px; min-height: 100vh; }
     .section { display: none; }
     .section.active { display: block; }
 
-    .hero-slideshow { width: 100%; height: 88vh; position: relative; overflow: hidden; background: #EDE9E2; display: flex; flex-direction: column; }
+    /* HERO */
+    .hero-slideshow { width: 100%; height: 88vh; position: relative; overflow: hidden; background: #EDE9E2; }
     .slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 1s ease; }
     .slide.active { opacity: 1; }
-    .slide img { max-width: 90%; max-height: 75vh; object-fit: contain; display: block; }
-    .slide-caption { position: absolute; bottom: 0.75rem; width: 100%; text-align: center; font-size: 11px; color: #888; font-style: italic; letter-spacing: 0.5px; background: transparent; padding: 0.5rem 0; }
+    .slide img { max-width: 90%; max-height: 78vh; object-fit: contain; display: block; }
+    .slide-caption { position: absolute; bottom: 0.75rem; width: 100%; text-align: center; font-size: 11px; color: #888; font-style: italic; letter-spacing: 0.5px; padding: 0.5rem 0; }
     .slide-dots { position: absolute; bottom: 1rem; right: 2rem; display: flex; gap: 6px; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: #ccc; cursor: pointer; transition: background 0.3s; }
     .dot.active { background: #777; }
 
-    .home-below { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; padding: 5rem 4rem; max-width: 980px; }
-    .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    /* HOME BELOW — stacked centered */
+    .home-below {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5rem 4rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .about-photo-wrap {
+      width: 480px;
+      max-width: 90%;
+      margin-bottom: 3rem;
+    }
+    .about-photo {
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 0;
+    }
+    .about-text {
+      width: 100%;
+      max-width: 560px;
+      text-align: left;
+    }
     .section-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; margin-bottom: 1rem; display: block; }
     .about-text p { font-size: 13.5px; line-height: 1.9; color: #444; margin-bottom: 2rem; }
     .divider { border: none; border-top: 0.5px solid #dedad3; margin: 1.5rem 0; }
@@ -62,40 +89,90 @@
     .contact-line a:hover { color: #1a1a1a; }
     .contact-note { font-size: 11px; color: #ccc; font-style: italic; margin-top: 0.4rem; }
 
+    /* GALLERY */
     .gallery-wrap { padding: 3rem 3rem 4rem; }
     .gallery-header { margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid #dedad3; }
     .gallery-header h2 { font-size: 11px; font-weight: normal; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; }
-    .gallery-grid { columns: 2; gap: 3rem; }
-    .artwork-item { break-inside: avoid; margin-bottom: 3rem; cursor: pointer; }
-    .artwork-item img { width: 100%; display: block; transition: opacity 0.2s; }
+    .gallery-grid { columns: 2; gap: 4rem; }
+    .artwork-item { break-inside: avoid; margin-bottom: 4rem; cursor: pointer; }
+    .artwork-item img { width: 100%; max-height: 80vh; object-fit: contain; display: block; transition: opacity 0.2s; }
     .artwork-item img:hover { opacity: 0.88; }
-    .artwork-caption { margin-top: 0.6rem; }
+    .artwork-caption { margin-top: 0.8rem; }
     .artwork-title { font-size: 13px; font-style: italic; color: #1a1a1a; }
     .artwork-meta { font-size: 11px; color: #aaa; line-height: 1.7; margin-top: 2px; }
-    .gallery-single { max-width: 680px; }
 
+    /* FULL WIDTH items (Kerbau, A Great Flood) */
+    .artwork-item-full {
+      break-inside: avoid;
+      margin-bottom: 4rem;
+      cursor: pointer;
+      column-span: all;
+    }
+    .artwork-item-full img { width: 100%; max-height: 60vh; object-fit: contain; display: block; transition: opacity 0.2s; }
+    .artwork-item-full img:hover { opacity: 0.88; }
+
+    /* PROJECTS centered */
+    .gallery-center { display: flex; justify-content: center; }
+    .gallery-single { width: 100%; max-width: 680px; }
+
+    /* MINI SLIDESHOW */
     .mini-slideshow { position: relative; width: 100%; }
     .mini-slide { display: none; }
     .mini-slide.active { display: block; }
-    .mini-slide img { width: 100%; display: block; transition: opacity 0.2s; }
+    .mini-slide img { width: 100%; max-height: 80vh; object-fit: contain; display: block; transition: opacity 0.2s; }
     .mini-slide img:hover { opacity: 0.88; }
     .mini-nav { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
     .mini-btn { background: none; border: 0.5px solid #ccc; color: #aaa; font-size: 12px; width: 22px; height: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s, color 0.2s; }
     .mini-btn:hover { border-color: #888; color: #333; }
     .mini-counter { font-size: 11px; color: #bbb; letter-spacing: 1px; }
 
+    /* LIGHTBOX */
     #lightbox { display: none; position: fixed; inset: 0; background: rgba(247,244,239,0.97); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
     #lightbox.open { display: flex; }
     #lightbox img { max-width: 88vw; max-height: 82vh; object-fit: contain; display: block; cursor: default; }
     #lightbox-caption { font-size: 12px; color: #888; font-style: italic; text-align: center; }
     #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-size: 24px; color: #aaa; cursor: pointer; background: none; border: none; font-family: Georgia, serif; line-height: 1; }
     #lightbox-close:hover { color: #1a1a1a; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .main { margin-left: 0; }
+
+      #sidebar {
+        transform: translateX(-220px);
+        width: 220px;
+      }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-tab {
+        right: -44px;
+        padding: 14px 10px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .hero-slideshow { height: 55vh; }
+      .slide img { max-height: 48vh; }
+
+      .home-below {
+        padding: 2rem 1.5rem;
+      }
+      .about-photo-wrap {
+        width: 65%;
+        max-width: 220px;
+        margin-bottom: 2rem;
+      }
+      .about-text { max-width: 100%; }
+
+      .gallery-wrap { padding: 2rem 1.5rem 3rem; }
+      .gallery-grid { columns: 1; }
+      .artwork-item-full img { max-height: 40vh; }
+    }
   </style>
 </head>
 <body>
 
 <div id="sidebar">
-  <div id="sidebar-tab">Menu</div>
+  <div id="sidebar-tab" onclick="toggleMobileSidebar()">Menu</div>
   <p class="site-name" onclick="showSection('home')">Naomi Uli Stocker</p>
   <div class="nav-item" onclick="showSection('home')">Home</div>
   <div class="nav-item" onclick="toggleSub('work-sub')">Work</div>
@@ -133,7 +210,7 @@
     </div>
 
     <div class="home-below">
-      <div>
+      <div class="about-photo-wrap">
         <img class="about-photo" src="images/naomi_photo.jpg" alt="Naomi Uli Stocker">
       </div>
       <div class="about-text">
@@ -197,15 +274,8 @@
           </div>
         </div>
 
-        <div class="artwork-item" onclick="openLightbox('images/degree/american_gothic.png','American Gothic')">
-          <img src="images/degree/american_gothic.png" alt="American Gothic">
-          <div class="artwork-caption">
-            <div class="artwork-title">American Gothic</div>
-            <div class="artwork-meta">Oil Paint on Stretched Canvas<br>30 x 47 inches<br>2026</div>
-          </div>
-        </div>
-
-        <div class="artwork-item" onclick="openLightbox('images/degree/kerbau.png','Kerbau')">
+        <!-- KERBAU — full width -->
+        <div class="artwork-item-full" onclick="openLightbox('images/degree/kerbau.png','Kerbau')">
           <img src="images/degree/kerbau.png" alt="Kerbau">
           <div class="artwork-caption">
             <div class="artwork-title">Kerbau</div>
@@ -213,11 +283,20 @@
           </div>
         </div>
 
-        <div class="artwork-item" onclick="openLightbox('images/degree/a_great_flood.png','A Great Flood')">
+        <!-- A GREAT FLOOD — full width -->
+        <div class="artwork-item-full" onclick="openLightbox('images/degree/a_great_flood.png','A Great Flood')">
           <img src="images/degree/a_great_flood.png" alt="A Great Flood">
           <div class="artwork-caption">
             <div class="artwork-title">A Great Flood</div>
             <div class="artwork-meta">Acrylic Paint and Gesso on Masonite Panel<br>4.5 x 48 inches (11.43 x 121.92 cm)<br>2026</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/degree/american_gothic.png','American Gothic')">
+          <img src="images/degree/american_gothic.png" alt="American Gothic">
+          <div class="artwork-caption">
+            <div class="artwork-title">American Gothic</div>
+            <div class="artwork-meta">Oil Paint on Stretched Canvas<br>30 x 47 inches<br>2026</div>
           </div>
         </div>
 
@@ -269,7 +348,6 @@
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Painting — Cockfighting / Chickens</h2></div>
       <div class="gallery-grid">
-
         <div class="artwork-item" onclick="openLightbox('images/chicken/cockfighting.jpeg','Cockfighting')">
           <img src="images/chicken/cockfighting.jpeg" alt="Cockfighting">
           <div class="artwork-caption">
@@ -277,7 +355,6 @@
             <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>31 x 42.5 inches<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/chicken/fighting_roosters.jpeg','Fighting Roosters')">
           <img src="images/chicken/fighting_roosters.jpeg" alt="Fighting Roosters">
           <div class="artwork-caption">
@@ -285,7 +362,6 @@
             <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/chicken/flight_or_fight.jpeg','Fight or Flight')">
           <img src="images/chicken/flight_or_fight.jpeg" alt="Fight or Flight">
           <div class="artwork-caption">
@@ -293,7 +369,6 @@
             <div class="artwork-meta">India Ink, Gesso, Acrylic Gouache on Unstretched Canvas<br>2024</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/chicken/self_portrait.jpeg','Self Portrait in Black and White')">
           <img src="images/chicken/self_portrait.jpeg" alt="Self Portrait in Black and White">
           <div class="artwork-caption">
@@ -301,7 +376,6 @@
             <div class="artwork-meta">India Ink, Galkyd and Oil Paint on Unstretched Canvas<br>2024</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/chicken/mermaid.jpg','Mermaid')">
           <img src="images/chicken/mermaid.jpg" alt="Mermaid">
           <div class="artwork-caption">
@@ -309,7 +383,6 @@
             <div class="artwork-meta">Fresco on Wood Panel<br>2026</div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -336,7 +409,6 @@
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Printmaking</h2></div>
       <div class="gallery-grid">
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/naomi_as_cookie.jpg','Naomi as Cookie (2/3)')">
           <img src="images/printmaking/naomi_as_cookie.jpg" alt="Naomi as Cookie">
           <div class="artwork-caption">
@@ -344,7 +416,6 @@
             <div class="artwork-meta">CMYK Letterpress Printmaking with Polymer Plates on Cream Bristol Paper<br>8 x 11.5 inches<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/naomi_as_cookie_registration.jpg','Naomi as Cookie Registration Sheet')">
           <img src="images/printmaking/naomi_as_cookie_registration.jpg" alt="Naomi as Cookie Registration Sheet">
           <div class="artwork-caption">
@@ -352,7 +423,6 @@
             <div class="artwork-meta">CMYK Letterpress Printmaking with Polymer Plates on Cream Bristol Paper<br>8 x 11.5 inches<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/ritzeratze.jpg','RITZERATZE')">
           <img src="images/printmaking/ritzeratze.jpg" alt="RITZERATZE">
           <div class="artwork-caption">
@@ -360,7 +430,6 @@
             <div class="artwork-meta">Letterpress Printmaking with Handset Type on Cream Bristol Paper<br>Lydian 24pt Typeface &nbsp;·&nbsp; 2 x 2 inches<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/dragonfruit_dalmatian_1.jpg','Dragonfruit Dalmatian no.1')">
           <img src="images/printmaking/dragonfruit_dalmatian_1.jpg" alt="Dragonfruit Dalmatian no.1">
           <div class="artwork-caption">
@@ -368,7 +437,6 @@
             <div class="artwork-meta">Linocut Print and Handset Letterpress on Cream Bristol Paper<br>16 x 22 cm<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/dragonfruit_dalmatian_2.jpg','Dragonfruit Dalmatian no.2')">
           <img src="images/printmaking/dragonfruit_dalmatian_2.jpg" alt="Dragonfruit Dalmatian no.2">
           <div class="artwork-caption">
@@ -376,7 +444,6 @@
             <div class="artwork-meta">Linocut Print and Handset Letterpress on Cream Bristol Paper<br>16 x 22 cm<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/imaginary_Tree.JPG','Imaginary Tree')">
           <img src="images/printmaking/imaginary_Tree.JPG" alt="Imaginary Tree">
           <div class="artwork-caption">
@@ -384,7 +451,6 @@
             <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/little_naomi_clown.jpg','Little Naomi as Clown')">
           <img src="images/printmaking/little_naomi_clown.jpg" alt="Little Naomi as Clown">
           <div class="artwork-caption">
@@ -392,7 +458,6 @@
             <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/printmaking/little_naomi.jpg','Little Naomi')">
           <img src="images/printmaking/little_naomi.jpg" alt="Little Naomi">
           <div class="artwork-caption">
@@ -400,7 +465,6 @@
             <div class="artwork-meta">Intaglio Drypoint on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -410,7 +474,6 @@
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Drawing</h2></div>
       <div class="gallery-grid">
-
         <div class="artwork-item">
           <div class="mini-slideshow" id="ms-lifedeath">
             <div class="mini-slide active" onclick="openLightbox('images/drawing/life_and_death_1.jpeg','Section from &quot;Life and Death&quot;')">
@@ -436,7 +499,6 @@
             <div class="artwork-meta">Fine Vine Charcoal on Stonehenge Paper<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/drawing/die_bremer.jpeg','Die Bremer Stadtmusikanten')">
           <img src="images/drawing/die_bremer.jpeg" alt="Die Bremer Stadtmusikanten">
           <div class="artwork-caption">
@@ -444,7 +506,6 @@
             <div class="artwork-meta">Fine Vine Charcoal on Paper<br>42 x 59.4 cm<br>2024</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/drawing/stiff_life.png','Stiff Life of Two Figures')">
           <img src="images/drawing/stiff_life.png" alt="Stiff Life of Two Figures">
           <div class="artwork-caption">
@@ -452,7 +513,6 @@
             <div class="artwork-meta">Compressed Charcoal on Paper<br>22 x 30 inches<br>2023</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/drawing/self_portrait_bw.png','Self Portrait')">
           <img src="images/drawing/self_portrait_bw.png" alt="Self Portrait">
           <div class="artwork-caption">
@@ -460,7 +520,6 @@
             <div class="artwork-meta">Compressed Charcoal on Newsprint<br>18 x 24 inches<br>2023</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/drawing/live_drawing.png','Live Drawing')">
           <img src="images/drawing/live_drawing.png" alt="Live Drawing">
           <div class="artwork-caption">
@@ -468,42 +527,40 @@
             <div class="artwork-meta">Compressed Charcoal on Newsprint<br>18 x 24 inches<br>2023</div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS — centered, fresco_mural_2 removed, now 4 images -->
   <div class="section" id="projects">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Projects</h2></div>
-      <div class="gallery-single">
-        <div class="artwork-item">
-          <div class="mini-slideshow" id="ms-fresco">
-            <div class="mini-slide active" onclick="openLightbox('images/projects/fresco_mural_1.jpg','College Building Collaborative Fresco Mural')">
-              <img src="images/projects/fresco_mural_1.jpg" alt="Fresco Mural 1">
+      <div class="gallery-center">
+        <div class="gallery-single">
+          <div class="artwork-item">
+            <div class="mini-slideshow" id="ms-fresco">
+              <div class="mini-slide active" onclick="openLightbox('images/projects/fresco_mural_1.jpg','College Building Collaborative Fresco Mural')">
+                <img src="images/projects/fresco_mural_1.jpg" alt="Fresco Mural 1">
+              </div>
+              <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_3.jpg','College Building Collaborative Fresco Mural')">
+                <img src="images/projects/fresco_mural_3.jpg" alt="Fresco Mural 3">
+              </div>
+              <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_4.jpeg','College Building Collaborative Fresco Mural')">
+                <img src="images/projects/fresco_mural_4.jpeg" alt="Fresco Mural 4">
+              </div>
+              <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_5.jpg','College Building Collaborative Fresco Mural')">
+                <img src="images/projects/fresco_mural_5.jpg" alt="Fresco Mural 5">
+              </div>
             </div>
-            <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_2.jpeg','College Building Collaborative Fresco Mural')">
-              <img src="images/projects/fresco_mural_2.jpeg" alt="Fresco Mural 2">
+            <div class="mini-nav">
+              <button class="mini-btn" onclick="miniPrev('ms-fresco',4)">&#8592;</button>
+              <span class="mini-counter" id="ms-fresco-counter">1 / 4</span>
+              <button class="mini-btn" onclick="miniNext('ms-fresco',4)">&#8594;</button>
             </div>
-            <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_3.jpg','College Building Collaborative Fresco Mural')">
-              <img src="images/projects/fresco_mural_3.jpg" alt="Fresco Mural 3">
+            <div class="artwork-caption">
+              <div class="artwork-title">College Building Collaborative Fresco Mural</div>
+              <div class="artwork-meta">Fresco on Wooden Wall<br>6th Floor College Building, Rhode Island School of Design<br>236 Benefit St, Providence, Rhode Island, USA<br>May 2026</div>
             </div>
-            <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_4.jpeg','College Building Collaborative Fresco Mural')">
-              <img src="images/projects/fresco_mural_4.jpeg" alt="Fresco Mural 4">
-            </div>
-            <div class="mini-slide" onclick="openLightbox('images/projects/fresco_mural_5.jpg','College Building Collaborative Fresco Mural')">
-              <img src="images/projects/fresco_mural_5.jpg" alt="Fresco Mural 5">
-            </div>
-          </div>
-          <div class="mini-nav">
-            <button class="mini-btn" onclick="miniPrev('ms-fresco',5)">&#8592;</button>
-            <span class="mini-counter" id="ms-fresco-counter">1 / 5</span>
-            <button class="mini-btn" onclick="miniNext('ms-fresco',5)">&#8594;</button>
-          </div>
-          <div class="artwork-caption">
-            <div class="artwork-title">College Building Collaborative Fresco Mural</div>
-            <div class="artwork-meta">Fresco on Wooden Wall<br>6th Floor College Building, Rhode Island School of Design<br>236 Benefit St, Providence, Rhode Island, USA<br>May 2026</div>
           </div>
         </div>
       </div>
@@ -520,6 +577,7 @@
 </div>
 
 <script>
+  // Hero Slideshow
   var heroSlides = document.querySelectorAll('#hero-show .slide');
   var heroDots = document.getElementById('hero-dots');
   var heroIdx = 0;
@@ -538,13 +596,22 @@
   }
   setInterval(function() { heroGo((heroIdx + 1) % heroSlides.length); }, 4500);
 
+  // Navigation
   function showSection(id) {
     document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
     window.scrollTo(0, 0);
+    // Close mobile sidebar after navigation
+    document.getElementById('sidebar').classList.remove('open');
   }
   function toggleSub(id) { document.getElementById(id).classList.toggle('open'); }
 
+  // Mobile sidebar toggle
+  function toggleMobileSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  // Mini Slideshows
   var miniState = {};
   function miniCurrent(id) { if (miniState[id] === undefined) miniState[id] = 0; return miniState[id]; }
   function miniGo(id, total, n) {
@@ -557,6 +624,7 @@
   function miniNext(id, total) { miniGo(id, total, miniCurrent(id) + 1); }
   function miniPrev(id, total) { miniGo(id, total, miniCurrent(id) - 1); }
 
+  // Lightbox
   function openLightbox(src, caption) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox-caption').textContent = caption;
