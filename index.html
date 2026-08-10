@@ -8,7 +8,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Georgia', serif; background-color: #F7F4EF; color: #1a1a1a; min-height: 100vh; }
 
-    /* SIDEBAR */
     #sidebar {
       position: fixed; left: 0; top: 0; width: 220px; height: 100%;
       background: #F7F4EF; padding: 2rem 1.5rem;
@@ -37,12 +36,10 @@
     .nav-leaf { font-size: 11px; color: #777; cursor: pointer; padding: 2px 0; text-decoration: none; display: block; }
     .nav-leaf:hover { color: #1a1a1a; }
 
-    /* MAIN */
     .main { margin-left: 40px; min-height: 100vh; }
     .section { display: none; }
     .section.active { display: block; }
 
-    /* HERO */
     .hero-slideshow { width: 100%; height: 88vh; position: relative; overflow: hidden; background: #EDE9E2; }
     .slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 1s ease; }
     .slide.active { opacity: 1; }
@@ -52,32 +49,20 @@
     .dot { width: 6px; height: 6px; border-radius: 50%; background: #ccc; cursor: pointer; transition: background 0.3s; }
     .dot.active { background: #777; }
 
-    /* HOME BELOW — stacked centered */
     .home-below {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4rem;
       padding: 5rem 4rem;
-      max-width: 700px;
+      width: fit-content;
+      max-width: 100%;
       margin: 0 auto;
     }
-    .about-photo-wrap {
-      width: 480px;
-      max-width: 90%;
-      margin-bottom: 3rem;
-    }
-    .about-photo {
-      width: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border-radius: 0;
-    }
-    .about-text {
-      width: 100%;
-      max-width: 560px;
-      text-align: left;
-    }
+    .about-photo-wrap { flex: 0 0 300px; width: 300px; }
+    .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
+    .about-text { flex: 0 1 480px; max-width: 480px; text-align: left; }
     .section-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; margin-bottom: 1rem; display: block; }
     .about-text p { font-size: 13.5px; line-height: 1.9; color: #444; margin-bottom: 2rem; }
     .divider { border: none; border-top: 0.5px solid #dedad3; margin: 1.5rem 0; }
@@ -89,7 +74,6 @@
     .contact-line a:hover { color: #1a1a1a; }
     .contact-note { font-size: 11px; color: #ccc; font-style: italic; margin-top: 0.4rem; }
 
-    /* GALLERY */
     .gallery-wrap { padding: 3rem 3rem 4rem; }
     .gallery-header { margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid #dedad3; }
     .gallery-header h2 { font-size: 11px; font-weight: normal; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; }
@@ -101,21 +85,23 @@
     .artwork-title { font-size: 13px; font-style: italic; color: #1a1a1a; }
     .artwork-meta { font-size: 11px; color: #aaa; line-height: 1.7; margin-top: 2px; }
 
-    /* FULL WIDTH items (Kerbau, A Great Flood) */
-    .artwork-item-full {
-      break-inside: avoid;
-      margin-bottom: 4rem;
-      cursor: pointer;
-      column-span: all;
-    }
+    .artwork-item-full { break-inside: avoid; margin-bottom: 4rem; cursor: pointer; column-span: all; }
     .artwork-item-full img { width: 100%; max-height: 60vh; object-fit: contain; display: block; transition: opacity 0.2s; }
     .artwork-item-full img:hover { opacity: 0.88; }
 
-    /* PROJECTS centered */
+    .gallery-grid-ordered { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .gallery-grid-ordered .artwork-item { margin-bottom: 0; }
+
+    .row-full { width: 100%; margin-bottom: 4rem; cursor: pointer; }
+    .row-full img { width: 100%; max-height: 65vh; object-fit: contain; display: block; transition: opacity 0.2s; }
+    .row-full img:hover { opacity: 0.88; }
+
+    .row-pair { display: flex; gap: 4rem; margin-bottom: 4rem; }
+    .row-pair .artwork-item { flex: 1; margin-bottom: 0; }
+
     .gallery-center { display: flex; justify-content: center; }
     .gallery-single { width: 100%; max-width: 680px; }
 
-    /* MINI SLIDESHOW */
     .mini-slideshow { position: relative; width: 100%; }
     .mini-slide { display: none; }
     .mini-slide.active { display: block; }
@@ -126,7 +112,6 @@
     .mini-btn:hover { border-color: #888; color: #333; }
     .mini-counter { font-size: 11px; color: #bbb; letter-spacing: 1px; }
 
-    /* LIGHTBOX */
     #lightbox { display: none; position: fixed; inset: 0; background: rgba(247,244,239,0.97); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
     #lightbox.open { display: flex; }
     #lightbox img { max-width: 88vw; max-height: 82vh; object-fit: contain; display: block; cursor: default; }
@@ -134,38 +119,22 @@
     #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-size: 24px; color: #aaa; cursor: pointer; background: none; border: none; font-family: Georgia, serif; line-height: 1; }
     #lightbox-close:hover { color: #1a1a1a; }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       .main { margin-left: 0; }
-
-      #sidebar {
-        transform: translateX(-220px);
-        width: 220px;
-      }
+      #sidebar { transform: translateX(-220px); width: 220px; }
       #sidebar.open { transform: translateX(0); }
-      #sidebar-tab {
-        right: -44px;
-        padding: 14px 10px;
-        font-size: 12px;
-        cursor: pointer;
-      }
-
+      #sidebar-tab { right: -44px; padding: 14px 10px; font-size: 12px; cursor: pointer; }
       .hero-slideshow { height: 55vh; }
       .slide img { max-height: 48vh; }
-
-      .home-below {
-        padding: 2rem 1.5rem;
-      }
-      .about-photo-wrap {
-        width: 65%;
-        max-width: 220px;
-        margin-bottom: 2rem;
-      }
-      .about-text { max-width: 100%; }
-
+      .home-below { flex-direction: column; align-items: center; padding: 2rem 1.5rem; gap: 2rem; width: 100%; }
+      .about-photo-wrap { flex: none; width: 85%; max-width: 320px; }
+      .about-text { max-width: 100%; flex: none; }
       .gallery-wrap { padding: 2rem 1.5rem 3rem; }
       .gallery-grid { columns: 1; }
+      .gallery-grid-ordered { grid-template-columns: 1fr; }
+      .row-pair { flex-direction: column; gap: 2rem; }
       .artwork-item-full img { max-height: 40vh; }
+      .row-full img { max-height: 40vh; }
     }
   </style>
 </head>
@@ -191,7 +160,6 @@
 
 <div class="main">
 
-  <!-- HOME -->
   <div class="section active" id="home">
     <div class="hero-slideshow" id="hero-show">
       <div class="slide active">
@@ -252,12 +220,11 @@
     </div>
   </div>
 
-  <!-- DEGREE PROJECT -->
   <div class="section" id="degree">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Painting — Degree Project</h2></div>
-      <div class="gallery-grid">
 
+      <div class="row-pair">
         <div class="artwork-item" onclick="openLightbox('images/degree/mirror_image.png','Mirror Image')">
           <img src="images/degree/mirror_image.png" alt="Mirror Image">
           <div class="artwork-caption">
@@ -265,7 +232,6 @@
             <div class="artwork-meta">Acrylic Paint and Charcoal on Stretched Canvas<br>70 x 70 inches<br>2025</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/degree/toba.png','Toba, 2009 no. 1')">
           <img src="images/degree/toba.png" alt="Toba, 2009 no. 1">
           <div class="artwork-caption">
@@ -273,33 +239,33 @@
             <div class="artwork-meta">Acrylic and Oil Paint on two Masonite Panels<br>48 x 96 inches (121.92 x 243.84 cm)<br>2026</div>
           </div>
         </div>
+      </div>
 
-        <!-- KERBAU — full width -->
-        <div class="artwork-item-full" onclick="openLightbox('images/degree/kerbau.png','Kerbau')">
-          <img src="images/degree/kerbau.png" alt="Kerbau">
-          <div class="artwork-caption">
-            <div class="artwork-title">Kerbau</div>
-            <div class="artwork-meta">Acrylic Paint on Masonite Panel<br>4.5 x 48 inches (11.43 x 121.92 cm)<br>2026</div>
-          </div>
+      <div class="row-full" onclick="openLightbox('images/degree/kerbau.png','Kerbau')">
+        <img src="images/degree/kerbau.png" alt="Kerbau">
+        <div class="artwork-caption">
+          <div class="artwork-title">Kerbau</div>
+          <div class="artwork-meta">Acrylic Paint on Masonite Panel<br>4.5 x 48 inches (11.43 x 121.92 cm)<br>2026</div>
         </div>
+      </div>
 
-        <!-- A GREAT FLOOD — full width -->
-        <div class="artwork-item-full" onclick="openLightbox('images/degree/a_great_flood.png','A Great Flood')">
-          <img src="images/degree/a_great_flood.png" alt="A Great Flood">
-          <div class="artwork-caption">
-            <div class="artwork-title">A Great Flood</div>
-            <div class="artwork-meta">Acrylic Paint and Gesso on Masonite Panel<br>4.5 x 48 inches (11.43 x 121.92 cm)<br>2026</div>
-          </div>
+      <div class="row-full" onclick="openLightbox('images/degree/a_great_flood.png','A Great Flood')">
+        <img src="images/degree/a_great_flood.png" alt="A Great Flood">
+        <div class="artwork-caption">
+          <div class="artwork-title">A Great Flood</div>
+          <div class="artwork-meta">Acrylic Paint and Gesso on Masonite Panel<br>4.5 x 48 inches (11.43 x 121.92 cm)<br>2026</div>
         </div>
+      </div>
 
-        <div class="artwork-item" onclick="openLightbox('images/degree/american_gothic.png','American Gothic')">
-          <img src="images/degree/american_gothic.png" alt="American Gothic">
-          <div class="artwork-caption">
-            <div class="artwork-title">American Gothic</div>
-            <div class="artwork-meta">Oil Paint on Stretched Canvas<br>30 x 47 inches<br>2026</div>
-          </div>
+      <div class="row-full" onclick="openLightbox('images/degree/american_gothic.png','American Gothic')">
+        <img src="images/degree/american_gothic.png" alt="American Gothic" style="max-height:70vh;">
+        <div class="artwork-caption">
+          <div class="artwork-title">American Gothic</div>
+          <div class="artwork-meta">Oil Paint on Stretched Canvas<br>30 x 47 inches<br>2026</div>
         </div>
+      </div>
 
+      <div class="row-pair">
         <div class="artwork-item" onclick="openLightbox('images/degree/abstract_water_buffalo.png','Abstract Water Buffalo')">
           <img src="images/degree/abstract_water_buffalo.png" alt="Abstract Water Buffalo">
           <div class="artwork-caption">
@@ -307,7 +273,6 @@
             <div class="artwork-meta">Acrylic Paint on Found Wood<br>11.75 x 3.5 inches (29.8 x 8.9 cm)<br>2026</div>
           </div>
         </div>
-
         <div class="artwork-item" onclick="openLightbox('images/degree/dalmantian.png','Dalmatian')">
           <img src="images/degree/dalmantian.png" alt="Dalmatian">
           <div class="artwork-caption">
@@ -315,53 +280,47 @@
             <div class="artwork-meta">Watercolour on Found Wood<br>11.75 x 3.5 inches<br>2025</div>
           </div>
         </div>
+      </div>
 
-        <div class="artwork-item">
-          <div class="mini-slideshow" id="ms-wallmount">
-            <div class="mini-slide active" onclick="openLightbox('images/degree/wall_mount_1.png','Wall Mount')">
-              <img src="images/degree/wall_mount_1.png" alt="Wall Mount 1">
-            </div>
-            <div class="mini-slide" onclick="openLightbox('images/degree/wall_mount_2.jpg','Wall Mount')">
-              <img src="images/degree/wall_mount_2.jpg" alt="Wall Mount 2">
-            </div>
-            <div class="mini-slide" onclick="openLightbox('images/degree/wall_mount_3.png','Wall Mount')">
-              <img src="images/degree/wall_mount_3.png" alt="Wall Mount 3">
-            </div>
+      <div class="row-full">
+        <div class="mini-slideshow" id="ms-wallmount">
+          <div class="mini-slide active" onclick="openLightbox('images/degree/wall_mount_1.png','Wall Mount')">
+            <img src="images/degree/wall_mount_1.png" alt="Wall Mount 1">
           </div>
-          <div class="mini-nav">
-            <button class="mini-btn" onclick="miniPrev('ms-wallmount',3)">&#8592;</button>
-            <span class="mini-counter" id="ms-wallmount-counter">1 / 3</span>
-            <button class="mini-btn" onclick="miniNext('ms-wallmount',3)">&#8594;</button>
+          <div class="mini-slide" onclick="openLightbox('images/degree/wall_mount_2.jpg','Wall Mount')">
+            <img src="images/degree/wall_mount_2.jpg" alt="Wall Mount 2">
           </div>
-          <div class="artwork-caption">
-            <div class="artwork-title">Wall Mount</div>
-            <div class="artwork-meta">Wire, Paper Mache and Acrylic Paint<br>Approx. 30.5 x 24 x 29.5 in.<br>2026</div>
+          <div class="mini-slide" onclick="openLightbox('images/degree/wall_mount_3.png','Wall Mount')">
+            <img src="images/degree/wall_mount_3.png" alt="Wall Mount 3">
           </div>
         </div>
-
+        <div class="mini-nav">
+          <button class="mini-btn" onclick="miniPrev('ms-wallmount',3)">&#8592;</button>
+          <span class="mini-counter" id="ms-wallmount-counter">1 / 3</span>
+          <button class="mini-btn" onclick="miniNext('ms-wallmount',3)">&#8594;</button>
+        </div>
+        <div class="artwork-caption">
+          <div class="artwork-title">Wall Mount</div>
+          <div class="artwork-meta">Wire, Paper Mache and Acrylic Paint<br>Approx. 30.5 x 24 x 29.5 in.<br>2026</div>
+        </div>
       </div>
+
     </div>
   </div>
 
-  <!-- COCKFIGHTING / CHICKENS -->
   <div class="section" id="chicken">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Painting — Cockfighting / Chickens</h2></div>
-      <div class="gallery-grid">
-        <div class="artwork-item" onclick="openLightbox('images/chicken/cockfighting.jpeg','Cockfighting')">
-          <img src="images/chicken/cockfighting.jpeg" alt="Cockfighting">
-          <div class="artwork-caption">
-            <div class="artwork-title">Cockfighting</div>
-            <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>31 x 42.5 inches<br>2025</div>
-          </div>
+
+      <div class="row-full" onclick="openLightbox('images/chicken/cockfighting.jpeg','Cockfighting')">
+        <img src="images/chicken/cockfighting.jpeg" alt="Cockfighting" style="max-height:70vh;">
+        <div class="artwork-caption">
+          <div class="artwork-title">Cockfighting</div>
+          <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>31 x 42.5 inches<br>2025</div>
         </div>
-        <div class="artwork-item" onclick="openLightbox('images/chicken/fighting_roosters.jpeg','Fighting Roosters')">
-          <img src="images/chicken/fighting_roosters.jpeg" alt="Fighting Roosters">
-          <div class="artwork-caption">
-            <div class="artwork-title">Fighting Roosters</div>
-            <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>2025</div>
-          </div>
-        </div>
+      </div>
+
+      <div class="row-pair">
         <div class="artwork-item" onclick="openLightbox('images/chicken/flight_or_fight.jpeg','Fight or Flight')">
           <img src="images/chicken/flight_or_fight.jpeg" alt="Fight or Flight">
           <div class="artwork-caption">
@@ -376,39 +335,96 @@
             <div class="artwork-meta">India Ink, Galkyd and Oil Paint on Unstretched Canvas<br>2024</div>
           </div>
         </div>
-        <div class="artwork-item" onclick="openLightbox('images/chicken/mermaid.jpg','Mermaid')">
-          <img src="images/chicken/mermaid.jpg" alt="Mermaid">
-          <div class="artwork-caption">
-            <div class="artwork-title">Mermaid</div>
-            <div class="artwork-meta">Fresco on Wood Panel<br>2026</div>
-          </div>
+      </div>
+
+      <div class="row-full" onclick="openLightbox('images/chicken/fighting_roosters.jpeg','Fighting Roosters')">
+        <img src="images/chicken/fighting_roosters.jpeg" alt="Fighting Roosters" style="max-height:70vh;">
+        <div class="artwork-caption">
+          <div class="artwork-title">Fighting Roosters</div>
+          <div class="artwork-meta">Acrylic Gouache, Oil Paint and Gesso on Unstretched Canvas<br>2025</div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- ARCHIVE -->
   <div class="section" id="archive">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Painting — Archive</h2></div>
-      <div class="gallery-grid">
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_01.jpg','')"><img src="images/archive/archive_01.jpg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_02.jpg','')"><img src="images/archive/archive_02.jpg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_03.jpeg','')"><img src="images/archive/archive_03.jpeg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_04.jpeg','')"><img src="images/archive/archive_04.jpeg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_05.jpeg','')"><img src="images/archive/archive_05.jpeg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_06.jpg','')"><img src="images/archive/archive_06.jpg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_07.jpeg','')"><img src="images/archive/archive_07.jpeg" alt="Archive"></div>
-        <div class="artwork-item" onclick="openLightbox('images/archive/archive_08.jpg','')"><img src="images/archive/archive_08.jpg" alt="Archive"></div>
+      <div class="gallery-grid-ordered">
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/self_portrait_painting_ii.jpeg','Self Portrait (Painting II Final)')">
+          <img src="images/archive/self_portrait_painting_ii.jpeg" alt="Self Portrait (Painting II Final)">
+          <div class="artwork-caption">
+            <div class="artwork-title">Self Portrait (Painting II Final)</div>
+            <div class="artwork-meta">Acrylic Gouache on Stretched Canvas<br>40 x 45 inches (101.6 x 114.3 cm)<br>2024</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/kakak_kakak_childhood_bedroom.jpeg','Kakak Kakak in Childhood Bedroom')">
+          <img src="images/archive/kakak_kakak_childhood_bedroom.jpeg" alt="Kakak Kakak in Childhood Bedroom">
+          <div class="artwork-caption">
+            <div class="artwork-title">Kakak Kakak in Childhood Bedroom</div>
+            <div class="artwork-meta">Oil Paint on Unstretched Canvas<br>2024</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/painting_for_the_future.jpg','Painting for the Future')">
+          <img src="images/archive/painting_for_the_future.jpg" alt="Painting for the Future">
+          <div class="artwork-caption">
+            <div class="artwork-title">Painting for the Future</div>
+            <div class="artwork-meta">Oil Paint on Stretched Canvas<br>48 x 54 inches<br>2023</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/collage_flowers.jpg','Collage Flowers')">
+          <img src="images/archive/collage_flowers.jpg" alt="Collage Flowers">
+          <div class="artwork-caption">
+            <div class="artwork-title">Collage Flowers</div>
+            <div class="artwork-meta">Magazine Collage<br>21 x 29.7 cm<br>2024</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/magazine_collage.png','')">
+          <img src="images/archive/magazine_collage.png" alt="Magazine Collage">
+          <div class="artwork-caption">
+            <div class="artwork-meta">Magazine Collage<br>21 x 29.7 cm<br>2024</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/portrait_of_yaya.jpg','Portrait of Yaya')">
+          <img src="images/archive/portrait_of_yaya.jpg" alt="Portrait of Yaya">
+          <div class="artwork-caption">
+            <div class="artwork-title">Portrait of Yaya</div>
+            <div class="artwork-meta">Oil Paint on Masonite Panel<br>2023</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/me_and_yaya.jpeg','Me and Yaya')">
+          <img src="images/archive/me_and_yaya.jpeg" alt="Me and Yaya">
+          <div class="artwork-caption">
+            <div class="artwork-title">Me and Yaya</div>
+            <div class="artwork-meta">Oil Paint on Masonite Panel<br>2023</div>
+          </div>
+        </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/archive/yaya_and_nadya.jpeg','Yaya and Nadya')">
+          <img src="images/archive/yaya_and_nadya.jpeg" alt="Yaya and Nadya">
+          <div class="artwork-caption">
+            <div class="artwork-title">Yaya and Nadya</div>
+            <div class="artwork-meta">Oil Paint on Masonite Panel<br>2023</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- PRINTMAKING -->
   <div class="section" id="printmaking">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Printmaking</h2></div>
-      <div class="gallery-grid">
+      <div class="gallery-grid-ordered">
+
         <div class="artwork-item" onclick="openLightbox('images/printmaking/naomi_as_cookie.jpg','Naomi as Cookie (2/3)')">
           <img src="images/printmaking/naomi_as_cookie.jpg" alt="Naomi as Cookie">
           <div class="artwork-caption">
@@ -416,20 +432,15 @@
             <div class="artwork-meta">CMYK Letterpress Printmaking with Polymer Plates on Cream Bristol Paper<br>8 x 11.5 inches<br>2025</div>
           </div>
         </div>
-        <div class="artwork-item" onclick="openLightbox('images/printmaking/naomi_as_cookie_registration.jpg','Naomi as Cookie Registration Sheet')">
-          <img src="images/printmaking/naomi_as_cookie_registration.jpg" alt="Naomi as Cookie Registration Sheet">
-          <div class="artwork-caption">
-            <div class="artwork-title">Naomi as Cookie Registration Sheet</div>
-            <div class="artwork-meta">CMYK Letterpress Printmaking with Polymer Plates on Cream Bristol Paper<br>8 x 11.5 inches<br>2025</div>
-          </div>
-        </div>
-        <div class="artwork-item" onclick="openLightbox('images/printmaking/ritzeratze.jpg','RITZERATZE')">
+
+        <div class="artwork-item" onclick="openLightbox('images/printmaking/ritzeratze.jpg','RITZERATZE')" style="max-width:70%;">
           <img src="images/printmaking/ritzeratze.jpg" alt="RITZERATZE">
           <div class="artwork-caption">
             <div class="artwork-title">RITZERATZE</div>
             <div class="artwork-meta">Letterpress Printmaking with Handset Type on Cream Bristol Paper<br>Lydian 24pt Typeface &nbsp;·&nbsp; 2 x 2 inches<br>2025</div>
           </div>
         </div>
+
         <div class="artwork-item" onclick="openLightbox('images/printmaking/dragonfruit_dalmatian_1.jpg','Dragonfruit Dalmatian no.1')">
           <img src="images/printmaking/dragonfruit_dalmatian_1.jpg" alt="Dragonfruit Dalmatian no.1">
           <div class="artwork-caption">
@@ -437,6 +448,7 @@
             <div class="artwork-meta">Linocut Print and Handset Letterpress on Cream Bristol Paper<br>16 x 22 cm<br>2025</div>
           </div>
         </div>
+
         <div class="artwork-item" onclick="openLightbox('images/printmaking/dragonfruit_dalmatian_2.jpg','Dragonfruit Dalmatian no.2')">
           <img src="images/printmaking/dragonfruit_dalmatian_2.jpg" alt="Dragonfruit Dalmatian no.2">
           <div class="artwork-caption">
@@ -444,20 +456,7 @@
             <div class="artwork-meta">Linocut Print and Handset Letterpress on Cream Bristol Paper<br>16 x 22 cm<br>2025</div>
           </div>
         </div>
-        <div class="artwork-item" onclick="openLightbox('images/printmaking/imaginary_Tree.JPG','Imaginary Tree')">
-          <img src="images/printmaking/imaginary_Tree.JPG" alt="Imaginary Tree">
-          <div class="artwork-caption">
-            <div class="artwork-title">Imaginary Tree</div>
-            <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
-          </div>
-        </div>
-        <div class="artwork-item" onclick="openLightbox('images/printmaking/little_naomi_clown.jpg','Little Naomi as Clown')">
-          <img src="images/printmaking/little_naomi_clown.jpg" alt="Little Naomi as Clown">
-          <div class="artwork-caption">
-            <div class="artwork-title">Little Naomi as Clown</div>
-            <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
-          </div>
-        </div>
+
         <div class="artwork-item" onclick="openLightbox('images/printmaking/little_naomi.jpg','Little Naomi')">
           <img src="images/printmaking/little_naomi.jpg" alt="Little Naomi">
           <div class="artwork-caption">
@@ -465,11 +464,30 @@
             <div class="artwork-meta">Intaglio Drypoint on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
           </div>
         </div>
+
+        <div class="artwork-item" onclick="openLightbox('images/printmaking/little_naomi_clown.jpg','Little Naomi as Clown')">
+          <img src="images/printmaking/little_naomi_clown.jpg" alt="Little Naomi as Clown">
+          <div class="artwork-caption">
+            <div class="artwork-title">Little Naomi as Clown</div>
+            <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
+          </div>
+        </div>
+
       </div>
+
+      <div class="gallery-grid" style="margin-top:4rem;">
+        <div class="artwork-item" onclick="openLightbox('images/printmaking/imaginary_Tree.JPG','Imaginary Tree')">
+          <img src="images/printmaking/imaginary_Tree.JPG" alt="Imaginary Tree">
+          <div class="artwork-caption">
+            <div class="artwork-title">Imaginary Tree</div>
+            <div class="artwork-meta">Intaglio Hardground on Rives BFK Paper<br>3 x 4 in Copperplate<br>2024</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- DRAWING -->
   <div class="section" id="drawing">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Drawing</h2></div>
@@ -531,7 +549,6 @@
     </div>
   </div>
 
-  <!-- PROJECTS — centered, fresco_mural_2 removed, now 4 images -->
   <div class="section" id="projects">
     <div class="gallery-wrap">
       <div class="gallery-header"><h2>Projects</h2></div>
@@ -569,7 +586,6 @@
 
 </div>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <button id="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
   <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
@@ -577,7 +593,6 @@
 </div>
 
 <script>
-  // Hero Slideshow
   var heroSlides = document.querySelectorAll('#hero-show .slide');
   var heroDots = document.getElementById('hero-dots');
   var heroIdx = 0;
@@ -596,22 +611,18 @@
   }
   setInterval(function() { heroGo((heroIdx + 1) % heroSlides.length); }, 4500);
 
-  // Navigation
   function showSection(id) {
     document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
     window.scrollTo(0, 0);
-    // Close mobile sidebar after navigation
     document.getElementById('sidebar').classList.remove('open');
   }
   function toggleSub(id) { document.getElementById(id).classList.toggle('open'); }
 
-  // Mobile sidebar toggle
   function toggleMobileSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
   }
 
-  // Mini Slideshows
   var miniState = {};
   function miniCurrent(id) { if (miniState[id] === undefined) miniState[id] = 0; return miniState[id]; }
   function miniGo(id, total, n) {
@@ -624,7 +635,6 @@
   function miniNext(id, total) { miniGo(id, total, miniCurrent(id) + 1); }
   function miniPrev(id, total) { miniGo(id, total, miniCurrent(id) - 1); }
 
-  // Lightbox
   function openLightbox(src, caption) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox-caption').textContent = caption;
